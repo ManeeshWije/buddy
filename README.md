@@ -24,4 +24,4 @@ You can then run the CLI using `make cli`
 
 ### Demo
 
-![](https://github.com/ManeeshWije/buddy.GIF)
+![](https://github.com/ManeeshWije/buddy/blob/main/buddy.GIF)
