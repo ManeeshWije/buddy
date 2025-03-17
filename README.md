@@ -25,3 +25,10 @@ You can then run the CLI using `make cli`
 ### Demo
 
 ![](https://github.com/ManeeshWije/buddy/blob/main/buddy.GIF)
+
+### TODO
+
+- Make it easier to users to use
+- Easier way to switch out models
+- Provide more functionality apart from chatbot
+- Stream responses (not sure if this can be done using Lambda and Golang.. [Possibly Helpful](https://aws.amazon.com/blogs/compute/introducing-aws-lambda-response-streaming/))
