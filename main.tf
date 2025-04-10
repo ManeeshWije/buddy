@@ -104,8 +104,8 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
 resource "aws_lambda_function" "buddy_lambda" {
   function_name = "${var.app_name}-function"
   role          = aws_iam_role.lambda_role.arn
-  handler       = "main"
-  runtime       = "provided.al2"
+  handler       = "index.handler"
+  runtime       = "nodejs22.x"
   timeout       = 30
   memory_size   = 256
 
@@ -125,27 +125,27 @@ resource "aws_lambda_function" "buddy_lambda" {
 resource "aws_dynamodb_table" "messages_table" {
   name         = "${var.app_name}-messages"
   billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "conversationId"
-  range_key    = "messageId"
+  hash_key     = "conversationID"
+  range_key    = "messageID"
 
   attribute {
-    name = "conversationId"
+    name = "conversationID"
     type = "S"
   }
 
   attribute {
-    name = "messageId"
+    name = "messageID"
     type = "S"
   }
 
   attribute {
-    name = "userId"
+    name = "userID"
     type = "S"
   }
 
   global_secondary_index {
-    name            = "UserIdIndex"
-    hash_key        = "userId"
+    name            = "UserIDIndex"
+    hash_key        = "userID"
     projection_type = "ALL"
   }
 }
@@ -165,7 +165,7 @@ resource "aws_api_gateway_resource" "resource" {
 # Usage plan for rate limiting
 resource "aws_api_gateway_usage_plan" "api_usage_plan" {
   name        = "${var.app_name}-usage-plan"
-  description = "Usage plan for rate limiting the API"
+  description = "plan for rate limiting the API"
 
   api_stages {
     api_id = aws_api_gateway_rest_api.api.id

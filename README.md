@@ -4,9 +4,12 @@ buddy is an AI assistant that lives in your terminal, ready to answer or provide
 
 ### Building
 
-The `Makefile` provides multiple targets depending on what you want to build. Usually, you can just use `make` which will build both the Lambda (cmd/buddy/main.go) and the cli (cmd/cli/cli.go).
+The `Makefile` provides multiple targets depending on what you want to build.
 
-If you make any changes to Terraform or the Lambda code, you can run `make deploy` which will build the code, zip the excutable, and apply the Terraform file. Note that it zips an executable called `bootstrap` as that's what Amazon's `provider.al2` requires for the Lambda function.
+- `make deploy` will first transpile the TypeScript files, then zip the code into `lambda.zip`, then deploy everything using `terraform apply`. You should use this when making any changes to `index.ts` or `main.tf`
+- `make run` will run the cli via `npm run cli.js`
+- You can also target individual stages via `make build-lambda, make build, etc`
+- `make clean` will remove transpiled js files and the lambda zip
 
 ### Running
 
@@ -18,9 +21,9 @@ Make sure you have provisioned your AWS using the `main.tf` file, it will create
 - API Gateway methods, usage plans, and api keys
 - and more
 
-Make sure the API_URL and API_KEY variables are present in your environment via `export API_URL= and export API_KEY=`. The API_URL will be your API gateway invoke url in the form of `https://<your-url>.execute-api.us-east-2.amazonaws.com/prod/chat`
+Make sure the API_URL and API_KEY variables are present in your environment via a `.env` file. The API_URL will be your API gateway invoke url in the form of `https://<your-url>.execute-api.us-east-2.amazonaws.com/prod/chat`
 
-You can then run the CLI using `make cli`
+You can then run the CLI using `make run`
 
 ### Demo
 
@@ -31,4 +34,4 @@ You can then run the CLI using `make cli`
 - Make it easier to users to use
 - Easier way to switch out models
 - Provide more functionality apart from chatbot
-- Stream responses (not sure if this can be done using Lambda and Golang.. [Possibly Helpful](https://aws.amazon.com/blogs/compute/introducing-aws-lambda-response-streaming/))
+- Stream responses

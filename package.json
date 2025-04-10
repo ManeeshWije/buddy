@@ -1,0 +1,31 @@
+{
+    "name": "buddy",
+    "version": "1.0.0",
+    "description": "buddy is an AI assistant that lives in your terminal, ready to answer or provide guidance when it comes to Linux commands, the terminal, etc. It utilizes a Lambda function that talks to AWS Bedrock running Llama3.3-70B. The api is then exposed using API Gateway and secured using an API key along with rate limiting in place. In terms of storage, the application uses DynamoDB to store users and their chat history which is used as context for when invoking the model multiple times.",
+    "homepage": "https://github.com/ManeeshWije/buddy#readme",
+    "bugs": {
+        "url": "https://github.com/ManeeshWije/buddy/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ManeeshWije/buddy.git"
+    },
+    "license": "ISC",
+    "author": "Maneesh Wijewardhana",
+    "scripts": {
+        "build": "tsc",
+        "cli": "tsc && node cli.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.14.0"
+    },
+    "dependencies": {
+        "@aws-sdk/client-bedrock-runtime": "^3.785.0",
+        "@aws-sdk/client-dynamodb": "^3.786.0",
+        "@aws-sdk/client-s3": "^3.782.0",
+        "@aws-sdk/util-dynamodb": "^3.786.0",
+        "@types/aws-lambda": "^8.10.149",
+        "dotenv": "^16.4.7"
+    }
+}
