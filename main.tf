@@ -328,21 +328,3 @@ output "api_url" {
   value = "${aws_api_gateway_stage.prod.invoke_url}${aws_api_gateway_resource.resource.path}"
   description = "API Gateway URL to call the AI assistant"
 }
-
-# Output Lambda function name
-output "lambda_function_name" {
-  value = aws_lambda_function.buddy_lambda.function_name
-  description = "Lambda function name"
-}
-
-# Output DynamoDB table names
-output "messages_table" {
-  value = aws_dynamodb_table.messages_table.name
-  description = "DynamoDB messages table name"
-}
-
-output "api_key" {
-  value       = aws_api_gateway_api_key.api_key.value
-  description = "API key for authentication"
-  sensitive   = true
-}
