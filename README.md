@@ -27,11 +27,10 @@ You can then run the CLI using `make run`
 
 ### Demo
 
-![](https://github.com/ManeeshWije/buddy/blob/main/buddy.GIF)
+![](https://github.com/ManeeshWije/buddy/blob/main/buddy.gif)
 
 ### TODO
 
-- Make it easier to users to use
 - Easier way to switch out models
 - Provide more functionality apart from chatbot
-- Stream responses
+- Stream responses for REAL (not simulated)
