@@ -29,6 +29,12 @@ You can then run the CLI using `make run`
 
 ![](https://github.com/ManeeshWije/buddy/blob/main/buddy.gif)
 
+### Architecture
+
+- Frontend: CLI
+- Backend: TypeScript, Node.js, AWS Lambda, AWS API Gateway, AWS Bedrock, Terraform
+- Database: DynamoDB
+
 ### TODO
 
 - Easier way to switch out models
